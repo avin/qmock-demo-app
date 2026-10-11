@@ -1,8 +1,99 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "react",
+    "react-perf",
+    "import",
+    "jsx-a11y",
+    "promise",
+    "vitest"
+  ],
+  "env": {
+    "builtin": true,
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "version": "19.2"
+    }
+  },
+  "categories": {
+    "correctness": "warn",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
   "rules": {
+    "curly": ["error", "all"],
+    "no-nested-ternary": "error",
+    "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
+    "eqeqeq": ["warn", "smart"],
+    "eslint/no-unused-vars": ["warn", { "args": "none" }],
+    "no-unsafe-finally": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": "warn",
+    "react/jsx-key": "warn",
     "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+    "react/exhaustive-deps": "warn",
+    "react/jsx-no-target-blank": "warn",
+    "import/no-duplicates": "warn",
+    "import/extensions": ["warn", { "ts": "never", "tsx": "never", "js": "never", "jsx": "never" }],
+    "import/consistent-type-specifier-style": "warn",
+    "import/no-unassigned-import": "off",
+    "import/no-named-as-default-member": "off",
+    "react-perf/jsx-no-new-function-as-prop": "off",
+    "react-perf/jsx-no-jsx-as-prop": "off"
+  },
+  "ignorePatterns": [
+    "dist",
+    "dist-ssr",
+    "coverage",
+    "storybook-static",
+    "playwright-report",
+    "test-results",
+    "blob-report",
+    "src/plugins/samsung-pay/lib/vendor"
+  ],
+  "options": {
+    "reportUnusedDisableDirectives": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{test,spec}.{ts,tsx}", "src/test/**"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "vitest/no-focused-tests": "warn",
+        "vitest/no-disabled-tests": "warn",
+        "vitest/expect-expect": "warn",
+        "vitest/require-mock-type-parameters": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.{ts,tsx}"],
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": [
+        "vite.config.ts",
+        "playwright.config.ts",
+        "**/*.config.{ts,mjs,cjs,js}",
+        "vite/**/*.ts",
+        ".storybook/**",
+        "e2e/**"
+      ],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "import/extensions": "off"
+      }
+    }
+  ]
 }
