@@ -1,16 +1,8 @@
-import {
-  ArrowUpRight,
-  Download,
-  Leaf,
-  Plus,
-  RefreshCw,
-  ShoppingBag,
-  Trash2,
-  X,
-} from "lucide-react";
+import { Download, Leaf, Plus, RefreshCw, ShoppingBag, Trash2, X } from "lucide-react";
 import { useState } from "react";
 import { add, clear, remove } from "@/app/cart";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { DevPanel } from "@/components/DevPanel/DevPanel";
 import { RequestError } from "@/components/RequestError";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -100,11 +92,6 @@ function App() {
           <div className="flex items-center gap-3">
             <Button variant="outline" disabled={orderState.isLoading} onClick={refresh}>
               <RefreshCw /> Обновить данные
-            </Button>
-            <Button asChild>
-              <a href="/__apiMock" target="_blank" rel="noreferrer">
-                Сценарии QMock <ArrowUpRight />
-              </a>
             </Button>
           </div>
         </div>
@@ -420,6 +407,7 @@ function App() {
           Little things · учебный магазин с API-моками. Заказы и подписка демонстрационные.
         </footer>
       </main>
+      {import.meta.env.DEV && <DevPanel />}
     </div>
   );
 }
