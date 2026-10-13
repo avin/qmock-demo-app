@@ -42,7 +42,9 @@ try {
       body: JSON.stringify(body),
     });
 
-  assert.equal((await request("/__apiMock", { headers: { Accept: "text/html" } })).status, 200);
+  const dashboard = await request("/__apiMocks", { headers: { Accept: "text/html" } });
+  assert.equal(dashboard.status, 200);
+  assert.match(await dashboard.text(), /src="\/__apiMocks\/assets\//);
   const catalog = await get("/__apiMocks/overrides");
   const discovered = leaves(catalog.tree);
   assert.equal(discovered.length, 14);

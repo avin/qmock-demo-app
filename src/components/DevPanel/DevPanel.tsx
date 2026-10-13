@@ -16,7 +16,7 @@ export function DevPanel() {
             <X size={16} />
           </Dialog.Close>
           {/* eslint-disable-next-line react/iframe-missing-sandbox -- Локальной панели QMock нужны скрипты и доступ к своему origin. */}
-          <iframe className={styles.frame} src="/__apiMock" title="Mock overrides" />
+          <iframe className={styles.frame} src="/__apiMocks" title="Mock overrides" />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

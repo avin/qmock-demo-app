@@ -24,9 +24,8 @@ RTK Query API: `src/services/api.ts` (base URL `/api`).
 
 Add UI components with `npx shadcn@latest add <component>`.
 
-QMock is a local development dependency (`file:../qmock`). Build it with
-`npm --prefix ../qmock run build` after changing its source.
-The mock dashboard is available at `/__apiMock` while Vite is running.
+QMock 0.1.1 is installed from npm as a development dependency.
+The mock dashboard is available at `/__apiMocks` while Vite is running.
 Handlers are configured in `src/mocks/handlers.ts`.
 
 Откройте магазин на `http://localhost:5173`, затем нажмите «Сценарии QMock».
